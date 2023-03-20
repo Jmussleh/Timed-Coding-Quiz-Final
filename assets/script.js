@@ -54,3 +54,18 @@ let questions = [
         });
       }
     
+      function selectAnswer(event) {
+        const selectedBtn = event.target;
+        const correct = selectedBtn.dataset.correct === 'true';
+        if (correct) {
+            timer--;
+        } else {
+            timeleft -= 10;
+      }
+      currentindex++;
+      if (currentindex < questions.length) {
+        displayquestion(questions[currentindex]);
+      } else {
+        endQuiz();
+      }
+    }
