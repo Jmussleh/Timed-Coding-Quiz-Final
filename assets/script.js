@@ -1,4 +1,4 @@
-var Start = document.querySelector("#startbtn");
+var Start = document.querySelector(".startbtn");
 var Quiz = document.querySelector("QuizContainer");
 var Question = document.querySelector("#Question");
 var Answers = document.querySelector("#Options");
@@ -7,7 +7,6 @@ var Timer = document.querySelector("#timer");
     let currentindex = 0;
     let score = 0;
     let timeleft = 60;
-    let timer;
 
 let questions = [
         {
@@ -39,10 +38,10 @@ let questions = [
         },
       ]; 
 
-      function displayquestion(question) {
-        Question.innerText = question.question;
+      function displayquestion() {
+        Question.innerText = Question;
         Answers.innerHTML = '';
-        question.Answers.forEach(answer => {
+        Question.Answers.forEach(answer => {
             const button = document.createElement('button');
             button.innerText = answer.text;
             button.classList.add('btn');
@@ -72,14 +71,14 @@ let questions = [
 
     function startQuiz() {
        Start.classList.add('hide');
-        timer = setInterval(updateTimer, 1000);
-       displayquestion(questions[currentindex]);
+        Timer = setInterval(updateTimer, 1000);
+       displayquestion();
+       selectAnswer();
     }
 
     function endQuiz() {
-        clearInterval(timer);
+        clearInterval(Timer);
         Quiz.innerHTML = "<h2>You scored ${score} out of ${questions.length}.</h2>"
-        
     const initialsInput = document.getElementById('initials');
     const form = document.querySelector('form');
     form.addEventListener('submit', saveHighScore);
@@ -87,7 +86,7 @@ let questions = [
 
     function updateTimer() {
         timeleft--;
-        timer.innerText = timeleft;
+        Timer.innerText = timeleft;
         if (timeleft === 0) {
           endQuiz();
         }
@@ -99,3 +98,5 @@ let questions = [
         const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
         highScores.push({ initials, score: timeleft });
         highScores}
+
+        Start.addEventListener('click', startQuiz);
