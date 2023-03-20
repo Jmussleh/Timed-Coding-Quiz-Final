@@ -1,8 +1,13 @@
 var Start = document.querySelector("#startbtn");
-    var Quiz = document.querySelector("QuizContainer");
-    var Question = document.querySelector("#Question");
-    var Answers = document.querySelector("#Options");
-    var Timer = document.querySelector("#timer");
+var Quiz = document.querySelector("QuizContainer");
+var Question = document.querySelector("#Question");
+var Answers = document.querySelector("#Options");
+var Timer = document.querySelector("#timer");
+
+    let currentindex = 0;
+    let score = 0;
+    let timeleft = 60;
+    let timer;
 
 let questions = [
         {
@@ -33,4 +38,19 @@ let questions = [
           ]
         },
       ]; 
+
+      function displayquestion(question) {
+        Question.innerText = question.question;
+        Answers.innerHTML = '';
+        question.Answers.forEach(answer => {
+            const button = document.createElement('button');
+            button.innerText = answer.text;
+            button.classList.add('btn');
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener('click', selectAnswer);
+            Answers.appendChild(button);
+        });
+      }
     
