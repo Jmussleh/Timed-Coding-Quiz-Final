@@ -58,7 +58,7 @@ let questions = [
         const selectedBtn = event.target;
         const correct = selectedBtn.dataset.correct === 'true';
         if (correct) {
-            timer--;
+            score++;
         } else {
             timeleft -= 10;
       }
@@ -69,3 +69,33 @@ let questions = [
         endQuiz();
       }
     }
+
+    function startQuiz() {
+       Start.classList.add('hide');
+        timer = setInterval(updateTimer, 1000);
+       displayquestion(questions[currentindex]);
+    }
+
+    function endQuiz() {
+        clearInterval(timer);
+        Quiz.innerHTML = "<h2>You scored ${score} out of ${questions.length}.</h2>"
+        
+    const initialsInput = document.getElementById('initials');
+    const form = document.querySelector('form');
+    form.addEventListener('submit', saveHighScore);
+    }
+
+    function updateTimer() {
+        timeleft--;
+        timer.innerText = timeleft;
+        if (timeleft === 0) {
+          endQuiz();
+        }
+      }
+      
+      function saveHighScore(event) {
+        event.preventDefault();
+        const initials = initialsInput.value;
+        const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+        highScores.push({ initials, score: timeleft });
+        highScores}
