@@ -10,23 +10,32 @@
 <body>
     <header>
         <a href="#" id="high-scores-link">High Scores</a>
-        <div id="timer"></div>
+        <div id="timer">Time: <span id="time">0</span></div>
     </header>
     <main>
-        <h1>Coding Quiz</h1>
-        <button class="startbtn">Start</button>
-        <div class="QuizContianer">
-            <header>
-            <h2 class="title">Coding Quiz</h2>
-            <div class="timer">
-                <h2 class="timeremaining">Time Left: </h2>
-                <h3 class="seconds">60</h3>
+        <div id="start-screen" class="start">
+            <h1>Coding Quiz</h1>
+            <p>
+              Answer the following code-related questions within the time
+              limit. Keep in mind that incorrect answers will penalize your
+              score/time by 15 seconds!
+            </p>
+            <button id="start">Start Quiz</button>
+          </div>
+            <div id="questions" class="hide">
+                <h2 id="question-title"></h2>
+                <div id="options" class="options"></div>
             </div>
-            </header>
-        <section>
-            <div class="Question"></div>
-            <div class="Options"></div>
-        </section>
+        <div id="final-screen" class="hide">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="final-score"></span>.</p>
+            <p>
+              Enter initials: <input type="text" id="initials" max="3" />
+              <button id="submit">Submit</button>
+            </p>
+          </div>
+    
+          <div id="feedback" class="feedback hide"></div>
         </div>
     </main>
 <script src="assets/script.js"></script>
