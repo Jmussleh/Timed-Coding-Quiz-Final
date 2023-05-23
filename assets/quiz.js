@@ -1,4 +1,4 @@
-var currentQuestionIndex = 0;
+var QuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
@@ -9,6 +9,7 @@ var submitBtn = document.getElementById('submit');
 var startBtn = document.getElementById('start');
 var initialsEl = document.getElementById('initials');
 var inputEl = document.getElementById('input');
+var titleEl = document.getElementById('question-title');
 
 function startQuiz() {
     var startScreen = document.getElementById('start-screen');
@@ -21,7 +22,6 @@ function startQuiz() {
 
   function displayQuestion() {
     var currentQ = questions[QuestionIndex];
-    var titleEl = document.getElementById('question-title');
     titleEl.textContent = currentQ.title;
     optionsEl.innerHTML = '';
     for (var i = 0; i < currentQ.options.length; i++) {
@@ -43,7 +43,7 @@ function startQuiz() {
       return;
     }
   
-    if (button.value !== questions[currentQuestionIndex].answer) {
+    if (button.value !== questions[QuestionIndex].answer) {
       time -= 15;
       if (time < 0) {
         time = 0;
@@ -61,9 +61,9 @@ function startQuiz() {
       inputEl.setAttribute('class', 'input hide');
     }, 1000);
   
-    currentQuestionIndex++;
+    QuestionIndex++;
   
-    if (time <= 0 || currentQuestionIndex === questions.length) {
+    if (time <= 0 || QuestionIndex === questions.length) {
       endQuiz();
     } else {
       displayQuestion();
