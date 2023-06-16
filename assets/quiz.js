@@ -2,7 +2,7 @@ var QuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
 
-var questions = document.getElementById('questions');
+var questionsE1 = document.getElementById('questions');
 var timerEl = document.getElementById('time');
 var optionsEl = document.getElementById('options');
 var submitBtn = document.getElementById('submit');
@@ -14,7 +14,7 @@ var titleEl = document.getElementById('question-title');
 function startQuiz() {
     var startScreen = document.getElementById('start-screen');
     startScreen.setAttribute('class', 'hide');
-    questions.removeAttribute('class');
+    questionsE1.removeAttribute('class');
     timerId = setInterval(clock, 1000);
     timerEl.textContent = time;
     displayQuestion();
@@ -80,7 +80,7 @@ function startQuiz() {
     var ScoreEl = document.getElementById('score');
     ScoreEl.textContent = time;
 
-    questions.setAttribute('class', 'hide');
+    questionsE1.setAttribute('class', 'hide');
   }
   
   function clock() {
