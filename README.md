@@ -8,4 +8,4 @@ This coding quiz is designed to help test potential candidates for an interview.
 
 
 ## Application
-https://jmussleh.github.io/Timed-Coding-Quiz-Final/Deployed 
+https://jmussleh.github.io/Timed-Coding-Quiz-Final/
